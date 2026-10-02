@@ -140,11 +140,14 @@ public class Controller {
                 display.setText(result > 0 ? "∞" : "-∞");
                 labelError.setText("[ERROR] Resultado infinito.");
             } else {
-                // Formatea el resultado
+                // Formatea el resultado:
                 String resultText;
+                // Si el resultado no tiene decimales, lo convierte a un número entero
                 if (result == (long) result) {
                     resultText = String.format("%d", (long) result);
                 } else {
+                    // Si tiene decimales, muestra hasta 10 cifras decimales.
+                    // Elimina los ceros sobrantes del final y el punto decimal si queda vacío.
                     resultText = String.format("%.10f", result).replaceAll("0*$", "").replaceAll("\\.$", "");
                 }
 
